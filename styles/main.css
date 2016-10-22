@@ -38,3 +38,12 @@ html {
      color: white;             /* sets the text color to white */
      min-height: 100%;         /* says the height of the body must be, at minimum, 100% of the window */
  }
+.clearfix::before,
+.clearfix::after {
+   content: " ";
+   display: table;
+}
+
+.clearfix::after {
+   clear: both;
+}
