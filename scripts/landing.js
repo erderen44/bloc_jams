@@ -1,10 +1,6 @@
-/*Refactor the individual style calls of the landing.js script to be a single function named revealPoint that:
-takes a single argument: the index of the points class node element, and
-gets called in a for loop.*/
-
-        var animatePoints = function() {
+var pointsArray = document.getElementsByClassName('point');
  
-                 var points = document.getElementsByClassName('point');
+            var animatePoints = function(points) {
  
                  var revealPoint = function(indexNumber) {
                      for (var indexNumber = 0; indexNumber < 3; indexNumber ++ ){
@@ -18,3 +14,15 @@ gets called in a for loop.*/
             revealPoint();
  
              };
+window.onload = function() {
+        if (window.innerHeight > 950) {
+                animatePoints(pointsArray);
+                }
+        var sellingPoints = document.getElementsByClassName('selling-points')[0];
+        var scrollDistance = sellingPoints.getBoundingClientRect().top - window.innerHeight + 200;
+        window.addEventListener('scroll', function(event) {
+             if (document.documentElement.scrollTop || document.body.scrollTop >= scrollDistance) {
+             animatePoints(pointsArray);   
+             }
+        });
+ }
