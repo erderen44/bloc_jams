@@ -12,7 +12,7 @@ var albumPicasso = {
          { title: 'Magenta', duration: '2:15'}
      ]
  };
- var albumMarconi = {
+var albumMarconi = {
      title: 'The Telephone',
      artist: 'Guglielmo Marconi',
      label: 'EM',
@@ -24,6 +24,20 @@ var albumPicasso = {
          { title: 'Fits in your pocket', duration: '3:21'},
          { title: 'Can you hear me now?', duration: '3:14' },
          { title: 'Wrong phone number', duration: '2:15'}
+     ]
+ };
+var albumFord = {
+     title: 'The Cheap Car',
+     artist: 'Henry Ford',
+     label: 'EM',
+     year: '1912',
+     albumArtUrl: 'assets/images/album_covers/20.png',
+     songs: [
+         { title: 'Lambourghini', duration: '1:02' },
+         { title: 'Ferrari', duration: '2:03' },
+         { title: 'Road Trip', duration: '3:04'},
+         { title: 'Asleep at the Wheel', duration: '4:05' },
+         { title: 'Drink and Drive', duration: '5:06'}
      ]
  };
  var createSongRow = function(songNumber, songName, songLength) {
@@ -62,4 +76,14 @@ var albumPicasso = {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
- };
+
+     var index = 0;     
+     document.getElementsByClassName("album-cover-art")[0].addEventListener("click", function (event) {
+            var albumArray = [albumMarconi, albumFord, albumPicasso];
+            setCurrentAlbum(albumArray[index]);
+            index++;
+            if (index === albumArray.length){index = 0;}
+            }    
+
+);
+};                                                                  
