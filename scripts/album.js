@@ -63,13 +63,21 @@ var albumPicasso = {
 var findParentByClassName = function(element, targetClass) {
     if (element) {
         var currentParent = element.parentElement;
-        while (currentParent.className != targetClass && currentParent.className !== null) {
-            currentParent = currentParent.parentElement;
+        if (element.parentElement = null){alert("No parent found")}
+        else {
+            while (currentParent.className !== targetClass && currentParent.className !== null) {
+                currentParent = currentParent.parentElement;
+            }
         }
-        return currentParent;
+        if (currentParent !== null) {return currentParent} else {alert("No parent found with that class name");} 
     }
 };
 
+/*
+Re-write the function so that it:
+Checks to see if a parent exists. If it doesn't, then show an alert that says "No parent found".
+Shows a different alert when it fails to find a parent with the given class name: "No parent found with that class name".
+*/
 var getSongItem = function(element) {
     switch (element.className) {
         case 'album-song-button':
@@ -124,7 +132,7 @@ var currentlyPlayingSong = null;
      setCurrentAlbum(albumPicasso);
 
      songListContainer.addEventListener('mouseover', function(event) {
-         /*Finally, update the code in the mouseover event with a conditional statement that only changes the innerHTML of the table cell when the element does not belong to the currently playing song. */
+         
             if (event.target.parentElement.className === 'album-view-song-item') {
                var songItem = getSongItem(event.target);
 
